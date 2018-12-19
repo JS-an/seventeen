@@ -1,0 +1,21 @@
+{
+  "restartable": "rs",
+  "ignore": [
+    ".git"
+  ],
+  "verbose": true,
+  "execMap": {
+    "": "node",
+    "js": "node --harmony"
+  },
+  "watch": [
+      "../express"
+  ],
+  "env": {
+      "NODE_ENV": "development",
+      "PORT": "3000"
+  },
+  "ext": "js json",
+  "legacy-watch": false
+}
+ 
