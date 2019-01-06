@@ -2,9 +2,10 @@ var mongoose = require('mongoose')
 var moment = require('moment')
 
 var articleSchema = new mongoose.Schema({
-  title: String,
-  cover: String,
-  main: String,
+  title: {type: String, default: ''},
+  cover: {type: String, default: ''},
+  main: {type: String, default: ''},
+  view: {type: String, default: ''},
   createTime: {type: String, default: moment().format('YYYY-MM-DD HH:mm:ss')},
   updateTime: {type: String, default: moment().format('YYYY-MM-DD HH:mm:ss')}
 }, {
@@ -22,12 +23,13 @@ articleSchema.pre('save', function (next) {
 
 // 静态方法
 articleSchema.statics = {
-  modify (id, title, cover, main) {
+  modify (id, title, cover, main, view) {
     this.findOne({_id: id}, function (err, doc) {
       if (err) console.log(err)
       doc.title = title
       doc.cover = cover
       doc.main = main
+      doc.view = view
       doc.save()
     })
   }

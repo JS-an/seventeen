@@ -63,8 +63,8 @@ module.exports.getArticle = (req, res, next) => {
   })
 }
 module.exports.addArticle = (req, res, next) => {
-  let {title, cover, main} = req.body
-  let article = new Article({title, cover, main})
+  let {title, cover, main, view} = req.body
+  let article = new Article({title, cover, main, view})
   article.save()
   res.end()
 }
@@ -74,7 +74,7 @@ module.exports.delArticle = (req, res, next) => {
   res.end()
 }
 module.exports.modifyArticle = (req, res, next) => {
-  let {id, title, cover, main} = req.body
-  Article.modify(id, title, cover, main)
+  let {id, title, cover, main, view} = req.body
+  Article.modify(id, title, cover, main, view)
   res.end()
 }
